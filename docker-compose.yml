@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mysql_config.ini:/etc/mysql/my.cnf  # Montar o arquivo de configuração personalizado
+    networks:
+      - backend
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: myuser
+      PMA_PASSWORD: mypassword
+    networks:
+      - backend
+    depends_on:
+      - mysql
+
+  apache-php:
+    image: php:8.0-apache
+    container_name: apache-php
+    ports:
+      - "80:80"
+    volumes:
+      - ./htdocs:/var/www/html
+      # Corrigido para assegurar que o caminho é correto e o arquivo existe
+      - ./httpd.conf:/etc/apache2/sites-available/000-default.conf
+    networks:
+      - backend
+    depends_on:
+      - mysql
+
+volumes:
+  mysql-data:
+
+networks:
+  backend:
