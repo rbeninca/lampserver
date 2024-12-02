@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício com Divs</title>
+    <style>
+        /* Estilo base para todas as divs com a classe .box */
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Definindo borda visível para todas as divs da classe .box */
+        .box {
+            border: 2px solid black;
+        }
+
+        /* Definindo cores de fundo para as divs box1, box2, box3 */
+        #box1 {
+            background-color: red;
+        }
+        #box2 {
+            background-color: green;
+        }
+        #box3 {
+            background-color: blue;
+        }
+        #box4 {
+            background-color: yellow;
+        }
+
+        /* Definindo cor de fundo cinza claro para o body e bordas */
+        body {
+            background-color: lightgray;
+            border: 2px solid black;
+        }
+
+        /* Removendo margens entre os elementos html, body e divs */
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Alterando apenas a borda de topo de uma div */
+        #box2 {
+            border-top: 5px dashed purple;
+        }
+
+        /* Definindo cantos arredondados para o box1 */
+        #box1 {
+            border-radius: 5%;
+        }
+
+        /* Definindo cantos arredondados para o box2 com diferentes valores */
+        #box2 {
+            border-top-left-radius: 5%;
+            border-top-right-radius: 7%;
+        }
+        #box4 {
+            border-radius: 50%;
+            text-align: center;
+            box-shadow: 10px 16px teal;
+        }
+
+        /* Definindo outline visível para todas as divs */
+        .box {
+            outline: 3px solid black;
+        }
+
+        /* Adicionando fundo com gradiente linear no box3 */
+        #box3 {
+            background: linear-gradient(to right, blue, white);
+        }
+    </style>
+</head>
+<body>
+    <div id="box1" class="box">div-1</div>
+    <div id="box2" class="box">div-2</div>
+    <div id="box3" class="box">div-3</div>
+    <div id="box4" class="box">div-4</div>
+
+    <!-- Lista ordenada com observações sobre as mudanças -->
+    <ol type="a">
+        <li>As divs agora possuem uma borda visível, destacando os limites de cada uma.</li>
+        <li>As divs box1, box2, e box3 têm cores de fundo distintas (vermelho, verde, azul).</li>
+        <li>O fundo da página mudou para cinza claro, e o body e html ganharam bordas pretas visíveis.</li>
+        <li>Não há mais espaçamento/margens entre as divs e o body, alinhando os elementos.</li>
+        <li>As divs estão organizadas horizontalmente devido ao `display: inline-block`.</li>
+        <li>A borda superior da div box2 foi alterada para roxo com um estilo tracejado.</li>
+        <li>Os cantos do box1 estão levemente arredondados, com um raio de 5%.</li>
+        <li>Os cantos superiores do box2 estão arredondados de forma assimétrica (5% à esquerda e 7% à direita).</li>
+        <li>Cada div agora tem um contorno (outline) preto visível ao redor de suas bordas.</li>
+        <li>O box3 possui um fundo gradiente, começando em azul e terminando em branco.</li>
+    </ol>
+</body>
+</html>

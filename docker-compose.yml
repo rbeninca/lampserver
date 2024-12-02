@@ -14,7 +14,7 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./mysql_config.ini:/etc/mysql/my.cnf  # Montar o arquivo de configuração personalizado
+      - ./mysql_config.ini:/etc/mysql/my.cnf
     networks:
       - backend
 
@@ -34,14 +34,12 @@ services:
       - mysql
 
   apache-php:
-    image: php:8.0-apache
+    build: .
     container_name: apache-php
     ports:
       - "80:80"
     volumes:
       - ./htdocs:/var/www/html
-      # Corrigido para assegurar que o caminho é correto e o arquivo existe
-      - ./httpd.conf:/etc/apache2/sites-available/000-default.conf
     networks:
       - backend
     depends_on:
